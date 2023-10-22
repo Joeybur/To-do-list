@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --Bright-Blue: hsl(220, 98%, 61%);
+  --Check-Background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  --Header: hsl(0, 0%, 100%);
+
+  --Main-background: hsl(235, 21%, 11%);
+  --Card-background: hsl(235, 24%, 19%);
+  --Light-Grayish-Blue: hsl(234, 39%, 85%);
+  --Task-text: hsl(236, 33%, 92%);
+  --Completed-text: hsl(234, 11%, 52%);
+  --Navigation-text: hsl(233, 14%, 35%);
+  --Very-Dark-Grayish-Blue: hsl(237, 14%, 26%);
+}
+
+:root body:is(.lightmode) {
+  --Main-background: hsl(0, 0%, 98%);
+  --Card-background: hsl(236, 33%, 92%);
+  --Completed-text: hsl(234, 11%, 51%);
+  --Navigation-text: hsl(236, 9%, 61%);
+  --Task-text: hsl(235, 19%, 35%);
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-direction: column;
+  background-image: url(images/bg-mobile-dark.jpg);
+  background-repeat: no-repeat;
+  background-size: 100vw 27.5vh;
+  background-color: var(--Main-background);
+  padding: 3rem 1.5rem;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+body.lightmode {
+  background-image: url(images/bg-mobile-light.jpg);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  max-width: 700px;
+  width: 100%;
+}
+
+header h1 {
+  color: var(--Header);
+  font-size: 1.75rem;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+.lightdark {
+  background-image: url(images/icon-sun.svg);
+  background-position: center;
+  background-size: cover;
+  background-color: transparent;
+  border: none;
+  width: 30px;
+}
+
+body.lightmode .lightdark {
+  background-image: url(images/icon-moon.svg);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 700px;
+}
+
+.input-container {
+  background: var(--Card-background);
+  padding: 1.5rem;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.input-container input {
+  width: 100%;
+  background: var(--Card-background);
+  color: var(--Navigation-text);
+  font-size: 1rem;
+  border: none;
+  outline: none;
+}
+
+.task-container {
+  display: flex;
+  flex-direction: column;
+  background: var(--Card-background);
+  width: 100%;
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+
+.tasks-features {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+}
+
+.tasks-features span {
+  color: var(--Completed-text);
+}
+
+.tasks-features button,
+.tasks-navigation button {
+  font-family: inherit;
+  color: var(--Completed-text);
+  outline: none;
+  border: none;
+  background: var(--Card-background);
+}
+
+.tasks-navigation {
+  width: 100%;
+  background: var(--Card-background);
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1.5rem;
+}
+
+.tasks-navigation button {
+  font-weight: 700;
+}
+
+.drag-and-drop {
+  color: var(--Navigation-text);
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 0;
+}
+
+.task .set-complete {
+  border-radius: 50%;
+  padding: 0.75rem;
+  background-color: transparent;
+  border: 1px solid var(--Navigation-text);
+}
+
+.task .set-complete.complete {
+  background: url(images/icon-check.svg), var(--Check-Background);
+  background-position: center;
+  background-size: contain;
+}
+
+.task-text {
+  color: var(--Task-text);
+}
+
+.task.complete .task-text {
+  color: var(--Completed-text);
+  text-decoration: line-through;
+}
+
+.delete-el {
+  opacity: 0;
+}
+
+.task.active .delete-el {
+  opacity: 100;
+  background-image: url(images/icon-cross.svg);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  padding: 0.75rem;
+  border: none;
+}
+
+#remaining {
+  padding-right: 0.25rem;
+}
+
+input[type='text'] {
+  color: var(--Task-text);
+}
+
+.hidden {
+  display: none;
+}
+
+.clear-btn:hover {
+  color: var(--Task-text);
+}
+
+.show-all:hover,
+.show-active:hover,
+.show-completed:hover {
+  color: var(--Task-text);
+}
+
+.show-active:focus,
+.show-all:focus,
+.show-completed:focus {
+  color: var(--Bright-Blue);
+}
